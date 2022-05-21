@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" >
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+    <div sec:authorize="isAuthenticated()">
+        <p>已登录</p >
+        <!-- 获取登录用户名 -->
+        <p>登录名：<span sec:authentication="name"></span></p >
+        <!-- 获取登录用户所具有的角色、菜单code -->
+        <p>角色权限：<span sec:authentication="principal.authorities"></span></p >
+        <!-- 获取登录用户名 -->
+        <p>Username：<span sec:authentication="principal.username"></span></p >
+    </div>
     <a href="/login">登录</a>
+    <a href="/logout">登出</a>
+    <h2>教务</h2>
+    <div>
+        <div class="student" sec:authorize="hasAnyAuthority('student')">
+            <div>成绩查询</div>
+            <div>奖罚查询</div>
+        </div>
+        <div class="teacher" sec:authorize="hasRole('teacher')">
+            <div>录入成绩</div>
+            <div>选课申请</div>
+            <div>选课情况</div>
+        </div>
+    </div>
 </body>
 </html>
