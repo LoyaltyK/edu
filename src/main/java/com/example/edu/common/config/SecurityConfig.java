@@ -27,20 +27,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
-                .antMatchers("/").permitAll()   //所有人都可以访问
-                .antMatchers("/home").hasAnyRole("student","teacher")   //需要有权限才能够访问
+                .antMatchers("/getUser").permitAll()   //所有人都可以访问
+                .antMatchers("/home").hasAnyAuthority("student","teacher")   //需要有权限才能够访问
 //                .antMatchers("/").hasAnyRole("student","teacher")
-                .antMatchers("/teacher/**").hasRole("teacher") //需要教师权限才能访问
-                .antMatchers("/student/**","/getUser").hasAnyAuthority("student");  //需要学生权限才能访问
+                .antMatchers("/teacher/**").hasAnyAuthority("teacher") //需要教师权限才能访问
+                .antMatchers("/student/**").hasAnyAuthority("student");  //需要学生权限才能访问
 
         http.formLogin()
                 .loginPage("/login")
+//                .successForwardUrl("/home")
+                .defaultSuccessUrl("/home")
                 .usernameParameter("userName")
                 .passwordParameter("passWord");
 
 
         http.logout()
                 .logoutSuccessUrl("/");    //注销后重定向
+
+        http.csrf().disable();
 
         http.rememberMe().rememberMeParameter("remember");  //开启记住我功能
     }

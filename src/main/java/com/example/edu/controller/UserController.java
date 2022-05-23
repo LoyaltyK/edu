@@ -19,12 +19,12 @@ public class UserController {
         return userService.selectUserByName("zs");
     }
 
-    @RequestMapping("/")
-    public String index(){
-        return "index";
-    }
+//    @RequestMapping("/")
+//    public String index(){
+//        return "index";
+//    }
 
-    @RequestMapping("/login")
+    @RequestMapping(value = {"/login","/"})
     public String login(){
         return "Login";
     }

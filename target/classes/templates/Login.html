@@ -3,13 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{/static/css/login.css}" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <form th:action="@{/login}" method="post">
-        <input placeholder="请输入账号" name="userName"><br>
-        <input placeholder="请输入密码" name="passWord"><br>
-        <input type="submit"><br>
-        <p th:if="${param.error}" th:text="${session?.SPRING_SECURITY_LAST_EXCEPTION?.message}" ></p>
-    </form>
+
+    <div class="login-main">
+        <div class="from-group">
+            <form th:action="@{/login}" method="post">
+                <div class="mb-3">
+                    <label for="userName" class="form-label">用户名</label>
+                    <input type="text" name="userName" class="form-control" id="userName" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="userPassword" class="form-label">密码</label>
+                    <input type="password" name="passWord" class="form-control" id="userPassword">
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">记住我</label>
+                </div>
+                <button type="submit" class="btn btn-lg btn-primary">登录</button>
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>
