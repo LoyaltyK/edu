@@ -6,4 +6,9 @@
     <select id="selectUserByName" resultType="com.example.edu.entity.User">
         select * from user where userName = #{userName}
     </select>
+
+
+    <update id="updatePassWordById">
+
+    </update>
 </mapper>
