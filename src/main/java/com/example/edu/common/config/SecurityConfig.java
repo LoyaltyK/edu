@@ -37,6 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
 //                .successForwardUrl("/home")
                 .defaultSuccessUrl("/home")
+//                .authenticationDetailsSource()
                 .usernameParameter("userName")
                 .passwordParameter("passWord");
 

@@ -3,12 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.edu.mapper.UserMapper">
-    <select id="selectUserByName" resultType="com.example.edu.entity.User">
-        select * from user where userName = #{userName}
+    <select id="selectStudentByStudentId" resultType="com.example.edu.entity.Student">
+        select * from student where studentId = #{studentId}
     </select>
-
-
-    <update id="updatePassWordById">
-
-    </update>
 </mapper>
